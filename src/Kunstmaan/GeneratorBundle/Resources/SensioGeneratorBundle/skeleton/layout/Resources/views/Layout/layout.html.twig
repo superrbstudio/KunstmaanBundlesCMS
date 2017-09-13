@@ -35,20 +35,6 @@
 <% if demosite %>
 <div class="emulate-pulldown">
 <% endif %>
-    {# Google Tagmanager #}
-    {% include '<%= shortBundleName %>/Layout/_googletagmanager.html.twig' %}
-
-    {# Outdated browser message #}
-    {% include '<%= shortBundleName %>/Layout/_outdatedbrowser.html.twig' %}
-
-<% if demosite %>
-    <div id="sidebar-toggle__sidebar" class="sidebar-toggle__sidebar sidebar-toggle__sidebar--left main-nav main-nav--mobile">
-        {# Mobile nav #}
-        {% include '<%= shortBundleName %>/Layout/_mobile-nav.html.twig' %}
-    </div>
-
-    <div id="sidebar-toggle__content" class="sidebar-toggle__content">
-<% endif %>
 
     {# Header #}
     {% block header %}
@@ -73,11 +59,6 @@
 <% if demosite %>
     </div>
 <% endif %>
-
-    {# Cookieconsent #}
-    {% block cookieconsent %}
-        {% include '<%= shortBundleName %>/Layout/_cookieconsent.html.twig' %}
-    {% endblock %}
 
     {# JS Footer #}
     {% block jsBundle %}
