@@ -8,12 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-    {% set node = null %}
-    {% if nodetranslation is defined %}
-        {% set node = nodetranslation.node %}
-    {% endif %}
-    {% set nodemenu = get_node_menu(app.request.locale, node) %}
-    {{ websitetitle | trans }}{% block title %}{% if page is defined and nodemenu.getActiveForDepth(2) is not null %} - {{ get_title_for(page) }}{% endif %}{% endblock %}
+		{% set node = null %}
+		{% if nodetranslation is defined %}
+			{% set node = nodetranslation.node %}
+		{% endif %}
+		{% set nodemenu = get_node_menu(app.request.locale, node) %}
+		{% block title %}
+			{% if page is defined %}
+				{{ get_title_for(page) }} | {{ websitetitle | trans }}
+			{% else %}
+				{{ websitetitle | trans }}
+			{% endif %}
+		{% endblock %}
     </title>
 
     {% if page is defined %}
