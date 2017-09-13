@@ -7,7 +7,6 @@ use Kunstmaan\ArticleBundle\Entity\AbstractArticlePage;
 use Kunstmaan\NodeSearchBundle\Helper\SearchTypeInterface;
 use Kunstmaan\PagePartBundle\Helper\HasPageTemplateInterface;
 use Symfony\Component\Form\AbstractType;
-use {{ namespace }}\Entity\{{ entity_class }}Author;
 use {{ namespace }}\Form\Pages\{{ entity_class }}PageAdminType;
 
 /**
@@ -17,25 +16,6 @@ use {{ namespace }}\Form\Pages\{{ entity_class }}PageAdminType;
  */
 class {{ entity_class }}Page extends AbstractArticlePage implements HasPageTemplateInterface, SearchTypeInterface
 {
-    /**
-     * @var {{ entity_class }}Author
-     *
-     * @ORM\ManyToOne(targetEntity="{{ namespace }}\Entity\{{ entity_class }}Author")
-     * @ORM\JoinColumn(name="{{ entity_class|lower }}_author_id", referencedColumnName="id")
-     */
-    protected $author;
-
-    public function setAuthor($author)
-    {
-	$this->author = $author;
-
-	return $this;
-    }
-
-    public function getAuthor()
-    {
-	return $this->author;
-    }
 
     /**
      * Returns the default backend form type for this page

@@ -9,9 +9,6 @@
                         <header class="blog-item__head">
                             <time class="blog-item__head__meta">
                                 {{ article.date | date("d/m/Y")}}
-                                {% if article.author is not empty %}
-                                    | <strong>{{ article.author.name }}</strong>
-                                {% endif %}
                             </time>
                             <h3 class="blog-item__head__title">
                                 <a href="{{ articlenode.url }}">

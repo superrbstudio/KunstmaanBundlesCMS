@@ -33,7 +33,7 @@ class {{ entity_class }}MenuAdaptor implements MenuAdaptorInterface
             }
         }
 
-        if (!is_null($parent) && 'KunstmaanAdminBundle_modules' == $parent->getRoute()) {
+        if (is_null($parent)) {
             // Page
             $menuItem = new TopMenuItem($menu);
             $menuItem
@@ -46,32 +46,7 @@ class {{ entity_class }}MenuAdaptor implements MenuAdaptorInterface
                 $parent->setActive(true);
             }
             $children[] = $menuItem;
-
-            // Author
-            $menuItem = new TopMenuItem($menu);
-            $menuItem
-		->setRoute('{{ bundle.getName()|lower }}_admin_{{ entity_class|lower }}author')
-                ->setLabel('{{ entity_class }} Authors')
-                ->setUniqueId('{{ entity_class }} Authors')
-                ->setParent($parent);
-            if (stripos($request->attributes->get('_route'), $menuItem->getRoute()) === 0) {
-                $menuItem->setActive(true);
-                $parent->setActive(true);
-            }
-            $children[] = $menuItem;
         }
 
-        //don't load children
-        if (!is_null($parent) && 'KunstmaanNodeBundle_nodes_edit' == $parent->getRoute()) {
-            foreach ($children as $key => $child) {
-                if ('KunstmaanNodeBundle_nodes_edit' == $child->getRoute()){
-                    $params = $child->getRouteParams();
-                    $id = $params['id'];
-                    if (in_array($id, $this->overviewpageIds)) {
-                        $child->setChildren(array());
-                    }
-                }
-            }
-        }
     }
 }
