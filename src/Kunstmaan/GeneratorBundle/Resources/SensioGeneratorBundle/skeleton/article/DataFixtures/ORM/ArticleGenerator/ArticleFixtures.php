@@ -14,7 +14,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use {{ namespace }}\Entity\Pages\{{ entity_class }}OverviewPage;
 use {{ namespace }}\Entity\Pages\{{ entity_class }}Page;
-use {{ namespace }}\Entity\{{ entity_class }}Author;
 
 /**
  * {{ entity_class }}ArticleFixtures
@@ -78,15 +77,10 @@ class {{ entity_class }}ArticleFixtures extends AbstractFixture implements Order
         // Create articles
 	for ($i=1; $i<=6; $i++) {
 
-	    // Create author
-	    $author = new {{ entity_class }}Author();
-	    $author->setName($fakerNL->name);
-	    $manager->persist($author);
-	    $manager->flush();
+
 
             $articlePage = new {{ entity_class }}Page();
-	    $articlePage->setTitle(Lorem::sentence(6));
-            $articlePage->setAuthor($author);
+	        $articlePage->setTitle(Lorem::sentence(6));
             $articlePage->setDate(DateTime::dateTimeBetween('-'.($i+1).' days', '-'.$i.' days'));
             $articlePage->setSummary(Lorem::paragraph(5));
 
