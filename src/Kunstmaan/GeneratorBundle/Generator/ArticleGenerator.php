@@ -179,6 +179,12 @@ class ArticleGenerator extends Generator
             throw new \RuntimeException($error->getMessage());
         }
 
+        try {
+            $this->generateSkeletonBasedClass($skeletonDir, $entity, $dirPath, 'AuthorAdminListController', $parameters);
+        } catch (\Exception $error) {
+            throw new \RuntimeException($error->getMessage());
+        }
+
         $output->writeln('Generating controllers : <info>OK</info>');
     }
 
@@ -220,6 +226,12 @@ class ArticleGenerator extends Generator
             throw new \RuntimeException($error->getMessage());
         }
 
+        try {
+            $this->generateSkeletonBasedClass($skeletonDir, $entity, $dirPath, 'AuthorAdminListConfigurator', $parameters);
+        } catch (\Exception $error) {
+            throw new \RuntimeException($error->getMessage());
+        }
+
         $output->writeln('Generating AdminList configurators : <info>OK</info>');
     }
 
@@ -249,6 +261,12 @@ class ArticleGenerator extends Generator
         }
 
 	$dirPath = sprintf("%s/Form/", $bundle->getPath());
+
+        try {
+            $this->generateSkeletonBasedClass($skeletonDir, $entity, $dirPath, 'AuthorAdminType', $parameters);
+        } catch (\Exception $error) {
+            throw new \RuntimeException($error->getMessage());
+        }
 
         $output->writeln('Generating forms : <info>OK</info>');
     }
@@ -306,6 +324,12 @@ class ArticleGenerator extends Generator
         }
 
 	$dirPath = sprintf("%s/Entity", $bundle->getPath());
+
+        try {
+            $this->generateSkeletonBasedClass($skeletonDir, $entity, $dirPath, 'Author', $parameters);
+        } catch (\Exception $error) {
+            throw new \RuntimeException($error->getMessage());
+        }
 
         $output->writeln('Generating entities : <info>OK</info>');
     }
